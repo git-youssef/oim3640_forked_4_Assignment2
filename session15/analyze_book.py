@@ -71,6 +71,12 @@ def most_common(hist, excluding_stopwords=False):
 
     returns: list of (frequency, word) pairs
     """
+    freq_word_tuples = [] # a list of tuples ((freq, word))
+    for word, freq in hist.items():
+        freq_word_tuples.append((freq, word))
+
+    freq_word_tuples.sort(reverse=True)
+    return freq_word_tuples
 
 
 def print_most_common(hist, num=10):
@@ -106,10 +112,10 @@ def main():
     print(f"Total number of words: {total_words(hist)}")
     print(f"Number of different words: {different_words(hist)}")
 
-    # t = most_common(hist, excluding_stopwords=True)
-    # print("The most common words are:")
-    # for freq, word in t[0:20]:
-    #     print(word, "\t", freq)
+    t = most_common(hist, excluding_stopwords=True)
+    print("The most common words are:")
+    for freq, word in t[0:20]:
+        print(word, "\t", freq)
 
     # words = process_file("words.txt", skip_header=False)
 
