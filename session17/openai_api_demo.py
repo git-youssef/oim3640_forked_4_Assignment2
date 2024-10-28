@@ -9,6 +9,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 def get_openai_response(system_prompt, user_prompt):
+    """Get a response from OpenAI's text generation API."""
     client = OpenAI(api_key=OPENAI_API_KEY)
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
